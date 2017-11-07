@@ -3,19 +3,99 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
+\usepackage{physics}
+\usepackage{amssymb}
+
 \usepackage{authblk}
 
 \title{Simetría: Partículas como representaciones del grupo de Poincaré}
 \author{Iván Mauricio Burbano Aldana}
 \affil{Universidad de los Andes}
 
+\DeclareMathOperator{\Gl}{Gl}
+\DeclareMathOperator{\Sl}{Sl}
+
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-El desarrollo de la relatividad especial aclaró la estructura espaciotemporal sobre la cual se ha formulado el modelo estandar de partículas. En particular, resalta un conjunto de transformaciones, el grupo de Poincaré, que preserva esta estructura. Sorprendentemente, el requerimiento natural de que el conjunto de estados de un sistema cuántico sea un espacio de representación de este grupo, lleva de manera natural al concepto de partícula como representación irreducible etiquetada con masa y espín\cite{Wigner1939}. Ya que este requerimiento se puede extender a otros grupos de simetrías (internas), responsables de la diversidad de particulas en el modelo estandar, el ejemplo relativista forma un punto de partida importante para ejemplificar la interacción entre simetría y particulas. Despues de caracterizar el grupo de Poincaré siguiendo \cite{Scheck2010}, seguiremos el camino de ``físicos''\cite{Haag1992}\cite{Weinberg1995} para mostrar como el concepto de partícula surge de la invarianza de Lorentz. Sin embargo, se hará un esfuerzo por notar las partes no rigurosas de los argumentos estandar y, bajo la tutoría de \cite{Straumann2008}, indicar los caminos a solucionarlas.  
+El desarrollo de la relatividad especial aclaró la estructura espaciotemporal sobre la cual se ha formulado el modelo estándar de partículas. En particular, resalta un conjunto de transformaciones, el grupo de Poincaré, que preserva esta estructura. Sorprendentemente, el requerimiento natural de que el conjunto de estados de un sistema cuántico sea un espacio de representación de este grupo, lleva de manera natural al concepto de partícula como representación irreducible etiquetada con masa y espín\cite{Wigner1939}. Ya que este requerimiento se puede extender a otros grupos de simetrías (internas), responsables de la diversidad de partículas en el modelo estandar, el ejemplo relativista forma un punto de partida importante para ejemplificar la interacción entre simetría y partículas. Después de caracterizar el grupo de Poincaré siguiendo \cite{Scheck2010}, seguiremos el camino de ``físicos''\cite{Haag1992}\cite{Weinberg1995} para mostrar como el concepto de partícula surge de la invariancia de Lorentz. Sin embargo, se hará un esfuerzo por notar las partes no rigurosas de los argumentos estándar y, bajo la tutoría de \cite{Straumann2008}, indicar los caminos a solucionarlas.  
 \end{abstract}
+
+\section{Transformaciones de Lorentz}
+
+Empecemos realizando un breve recuento de las transformaciones de Lorentz. Si bien principalmente seguiremos la exposición en \cite{Scheck2010}, una versión más formal (y bella debido a su independencia explicita de sistemas de referencia) se encuentra en \cite{Matolcsi1993}.
+
+El espaciotiempo relativista (especial) se conforma de la siguiente estructura de datos $(M,g)$ donde $M$ es un espacio afín real de cuatro dimensiones sobre un espacio vectorial $\vb{M}$ y $g:\vb{M}\cross\vb{M}\rightarrow I\otimes I$ una forma de Lorentz. Como se muestra en \cite{Matolcsi1993} cada espaciotiempo relativista es isomorfo al modelo aritmético $(\mathbb{R}^4,\eta)$ donde\footnote{A lo largo de este documento utilizaremos la convención de suma de Einstein. Los indices latinos irán a lo largo de $\{0,1,2,3,4\}$ mientras que los griegos de $\{1,2,3\}$. Además escogemos unidades donde la velocidad de la luz $c=1$.}
+\begin{align}
+\begin{split}
+\eta:\mathbb{R}^4\times\mathbb{R}^4&\rightarrow\mathbb{R} \\
+(u,v)&\mapsto \eta_{ab}u^a v^b
+\end{split}
+\end{align}  
+y 
+\begin{equation}
+\eta_{ab}=\mqty[1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1]_{ab}
+\end{equation}
+Note que si bien a nivel estructural el modelo aritmético es el único modelo de espaciotiempo relativista salvo isomorfismo, no hay ninguna razón por la cual escogerlo sobre los otros. En este trabajo lo haremos debido a nuestra familiaridad con los objetos involucrados en este. Sin embargo es importante hacer la salvedad: ¡No hemos escogido un sistema de referencia! En particular es importante distinguir entre los puntos del espaciotiempo $\mathbb{R}^4$ y los vectores (translaciones entre puntos) en el espacio modelo $\mathbb{R}^4$. En particular, el punto $(0,0,0,0)$ no tiene nada de especial con respecto a los otros puntos mientras que el vector $(0,0,0,0)$ sí. Por otra parte, los componentes de un vector $u\in\mathbb{R}^4$ no son las componentes medidas por ningún observador. Para poder definir estas es necesario incluir un sistema de referencia lo cual induce una partición del espaciotiempo. Para más discusión ver \cite{Matolcsi1993}.
+
+Ahora estudiemos los mapas que preservan estructura entre espaciotiempos aritméticos. Estos son los mapas afines (debido a la estructura afín de estos modelos)
+\begin{align}
+\begin{split}
+\mathbb{R}^4\rtimes \Gl(\mathbb{R}^4)\ni(a,\Lambda):\mathbb{R}^4&\rightarrow\mathbb{R}^4 \\
+p&\mapsto\Lambda p + a
+\end{split}
+\end{align}
+que preservan la forma de Lorentz
+\begin{equation}
+\eta(u,v)=\eta(\Lambda u,\Lambda v)
+\end{equation}
+La estructura de producto semidirecto es clara de la regla de composición que queremos que se cumpla. Así mismo se puede verificar que estos mapas forman un subgrupo de $\mathbb{R}^4\rtimes\Gl(\mathbb{R}^4)$ al cual llamamos el grupo de Poincaré $\mathcal{P}$. Los elementos $\Lambda\in\Gl(\mathbb{R}^4)$ tal que $(\Lambda,0)\in\mathcal{P}$ forman un subgrupo de $\Gl(\mathbb{R}^4)$ conocido como el grupo de Lorentz $\mathcal{L}$. Podemos identificar cuatro subconjuntos $\mathcal{L}_+^\uparrow$, $\mathcal{L}_+^\downarrow$, $\mathcal{L}_-^\uparrow$ y $\mathcal{L}_-^\downarrow$ de $\mathcal{L}$ donde el signo $\pm$ determina si $\det\Lambda=\pm 1$ y la flecha determina si $\Lambda^0_0\geq 1$ ($\uparrow$) o $\Lambda^0_0\leq -1$ ($\downarrow$). Estas resultan ser las cuatro componentes conexas de $\mathcal{L}$ y se tienen las siguientes conexiones entre ellas: $\mathcal{L}_-^\uparrow=P\mathcal{L}_+^\uparrow$, $\mathcal{L}_-^\downarrow=T\mathcal{L}_+^\uparrow$ y $\mathcal{L}_+^\downarrow=PT\mathcal{L}_+^\uparrow$ donde $P$ es la transformación de paridad
+\begin{equation}
+P=\mqty[1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1]
+\end{equation} 
+y $T$ la de inversión temporal $T=-P$. Debido a estas formulas y a nuestro objetivo de describir el surgimiento de masa y espín solo nos enfocaremos con la descripción del grupo de Lorentz ortocrono propio $\mathcal{L}_+^\uparrow$ y su grupo de Poincaré asociado $\mathcal{P}_+^\uparrow=\mathbb{R}^4\rtimes\mathcal{L}_+^\uparrow$.
+
+Como veremos en la siguiente sección, es importante estudiar la relación entre el grupo $\Sl(\mathbb{C}^2)$ de operadores invertibles de determinante 1 sobre $\mathbb{C}^2$ y $\mathcal{P}_+^\uparrow$. En primer lugar note el ismorfismo
+\begin{align}
+\begin{split}
+\Phi:\mathbb{R}^4&\rightarrow\{A:\mathbb{C}^2\rightarrow\mathbb{C}^2|\text{$A$ es autoadjunta}\} \\
+(v^0,v^1,v^2,v^3)&\mapsto\mqty[v^0+v^3 & v^1-iv^2 \\ v^1 + iv^2 & v^0-v^3]=v^a\sigma_a. 
+\end{split}
+\end{align}
+Su importancia recae en que
+\begin{equation}
+\eta(v,v)=\det(\Phi(v)).
+\end{equation}
+Por lo tanto la transformación $A\mapsto\alpha A\alpha^*$ al preservar determinantes para toda $\alpha\in\Sl(\mathbb{C}^2)$ puede verse como una transformación de Lorentz
+\begin{align}
+\begin{split}
+\Lambda:\Sl(\mathbb{C}^2)\rightarrow\mathcal{L}_+^\uparrow \quad & \\
+\alpha\mapsto \Lambda(\alpha):\mathbb{R}^4&\rightarrow\mathbb{R}^4 \\
+ v & \mapsto\Phi^{-1}(\alpha\Phi(v)\alpha^*)
+\end{split}
+\end{align}
+Note que $\mathcal{L}_+^\uparrow$ no es simplemente conexo. En efecto una rotación por $2\pi$ es un lazo que no puede ser deformado continuamente a la identidad. Sin embargo, $\Sl(\mathbb{C}^2)$ sí lo es y es el recubridor fundamental de $\mathcal{L}_+^\uparrow$. Así mismo, $\mathbb{R}^4\rtimes\Sl(\mathbb{C}^2)$ es el de $\mathcal{P}_+^\uparrow$. Si bien no hay momento para discutirlo en este lugar, esta conexión y las representaciones de $\Sl(\mathbb{C}^2)$ sobre espacios complejos de dimensión finita dan lugar a el concepto de espinores y son suficientes para deducir la ecuación de Klein-Gordon, Dirac, y sus generalizaciones para espines más altos\cite{Haag1992}.
+
+\section{Grupos de simetría en mecánica cuántica}
+
+Habiendo identificado $\mathcal{L}_+^\uparrow$ como un grupo de simetrías fundamental de la física, ahora pasemos a entender de manera general la interacción entre grupos de simetrías y mecánica cuántica. Para esto extenderemos la discusión dada en \cite{Haag1992}.
+
+Suponga que un sistema cuántico está descrito por un espacio de Hilbert $\mathcal{H}$. Los estados puros entonces son las proyecciones ortogonales $\rho_\psi$ sobre el subespacio generado por $\psi\in\mathcal{H}$. Es claro que un estado puro $\rho_\psi$ puede ser entendido como una proposición que corresponde a la observación ``el sistema está en el estado $\rho_\psi$''. Por lo tanto, si el sistema se encuentra en el estado puro $\rho_\phi$, la probabilidad de obtener el estado $\rho_\psi$ luego de una medición de este observable es
+\begin{equation}
+\tr(\rho_\psi\rho_\phi)=\frac{\langle\phi,\rho_\psi\phi\rangle}{\langle\phi,\phi\rangle}=\frac{\langle\phi,\langle\psi,\phi\rangle\psi\rangle}{\langle \phi,\phi\rangle\langle\psi,\psi\rangle}=\frac{|\langle\phi,\psi\rangle|^2}{\|\phi\|^2\|\psi\|^2}.
+\end{equation}
+
+Si $G$ es un grupo de simetrías del sistema, se debe inducir un mapa $T$ que a cada $g\in G$ asigna una transformación de estados puros $T(g)$ que preserva estos productos internos, es decir
+\begin{equation}
+\tr(T(g)(\rho_\psi)T(g)(\rho_\phi))=\tr(\rho_\psi\rho_\phi),
+\end{equation} 
+y respeta la ley de grupo $T(g)\circ T(g')=T(gg')$. Debido a la interpretación de estas trazas, es exactamente la existencia de tal mapa la que hace que $G$ sea un grupo de simetrías del sistema. Sin embargo, estos mapas de estados son difíciles de manejar y nos gustaría trabajar con mapas entre vectores. Resulta que una transformación de estados puros como la anterior se puede siempre reemplazar por una de vectores lineal y unitaria o antilineal y antiunitaria que queda completamente determinada excepto por una fase\cite{Haag1992}. Este último caso no es posible cuando trabajamos con grupos continuos. Concluimos entonces que si $G$ es continuo, a cada $g\in G$ le corresponde un operador unitario $U(g)$ sobre $\mathcal{H}$ de manera que $U(g)U(g')=\chi(g,g')U(gg')$ donde $\chi(g,g')$ es una fase. Resulta que para el grupo $\mathcal{P}_+^\uparrow$ podemos tomar la fase $\chi(g,g')=1$ si consideramos el grupo de simetrías como su recubridor fundamental $\mathbb{R}^4\rtimes\Sl(\mathbb{C}^2)$\cite{Haag1992}. 
+
+Concluimos entonces que: si el grupo ortocrono propio de Poincaré es un grupo de simetrías de la física entonces toda teoría descrita en un espacio de Hilbert $\mathcal{H}$ debe llevar una representación unitaria de $\mathbb{R}^4\rtimes\Sl(\mathbb{C}^2)$, es decir, un homomorfismo $U:\mathbb{R}^4\rtimes\Sl(\mathbb{C}^2)\rightarrow U(\mathcal{H})$ donde $U(\mathcal{H})$ es el grupo de transformaciones unitarias de $\mathcal{H}$.
+
+\section{Representaciones irreducibles del grupo de Poincaré}
 
 \bibliography{/home/ivan/Documents/Bib_Files/particle_physics_2017_II}
 \bibliographystyle{ieeetr}
