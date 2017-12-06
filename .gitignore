@@ -3,3 +3,8 @@
 *.log
 *.gz
 *.bbl
+*.toc
+*.nav
+*.out
+*.snm
+*.vrb
