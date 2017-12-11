@@ -8,6 +8,7 @@
 \usepackage{tikz-cd}
 
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\SU}{SU}
@@ -94,20 +95,25 @@ Como se vio en clase, el análisis de $P$ y $T$ debe hacerse con cuidado. Nos re
 \begin{frame}[fragile]
 \frametitle{Recubridor Universal}
 \begin{columns}
-\column{0.6\textwidth}
+\column{0.58\textwidth}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{helice.png}
 \caption{Se muestra como $\mathbb{R}$ es el recubridor universal de $S^1$.}
 \end{figure}
-\column{0.38\textwidth}
+\column{0.40\textwidth}
 \begin{align}
 \begin{split}
-\Phi:\mathbb{R}^4&\rightarrow \Hom(\mathbb{C}^2,\mathbb{C}^2)\\
+\Phi:\mathbb{R}^4&\rightarrow \Hom(\mathbb{C}^2,\mathbb{C}^2)_s \\
 v^\alpha e_\alpha&\mapsto v^\alpha\sigma_\alpha \\
-\Lambda:\SL(\mathbb{C}^2)&\rightarrow \mathcal{L}^+_\uparrow
 \end{split}
 \end{align}
+\begin{equation}
+\eta(u,u)=\det(\Phi(u))
+\end{equation}
+\begin{equation}
+\Lambda:\SL(\mathbb{C}^2)\rightarrow \mathcal{L}^+_\uparrow
+\end{equation}
 \end{columns}
 \end{frame}
 
